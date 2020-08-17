@@ -1,10 +1,9 @@
 package com.septproject.wed_16_30_2.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+
+import java.util.Date;
 
 @Entity
 public class Customer {
@@ -16,6 +15,19 @@ public class Customer {
     private String last_name;
     private String email_address;
     private String username;
+
+    private Date created;
+    private Date updated;
+
+    @PrePersist
+    protected void conCreate(){
+        this.created = new Date();
+    }
+
+    @PreUpdate
+    protected void onUpdate(){
+        this.updated = new Date();
+    }
 
 
 }
